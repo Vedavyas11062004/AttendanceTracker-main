@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Attendance = require("./routes/attendance");
 const Students = require("./routes/student");
 const Login = require("./routes/login");
-const Request = require("./routes/request")
+const Request = require("./routes/request");
 
 const PORT = process.env.PORT || 8082;
 
@@ -11,7 +11,7 @@ var cors = require("cors");
 
 const app = express();
 
-app.use(cors({ origin : true, credentials : true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 // app.use(function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', 'http://localhost:8082');
@@ -22,15 +22,16 @@ app.use(express.json());
 //     next();
 //   });
 
-const URL = "mongodb+srv://sharath:m85HmuqHMGTIlpD1@default.borpg.mongodb.net/?retryWrites=true&w=majority&appName=Default";
+const URL =
+  "mongodb+srv://vedavyas14042003:AuA9KdQYwzwqO5uG@cluster0.is5npsm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose
-    .connect(URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(console.log("Connected to MongoDb"))
-    .catch((err) => (console.log(err)));
+  .connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(console.log("Connected to MongoDb"))
+  .catch((err) => console.log(err));
 
 app.use(Attendance);
 app.use(Students);
@@ -38,5 +39,5 @@ app.use(Login);
 app.use(Request);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });
